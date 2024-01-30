@@ -10,17 +10,24 @@ img {
 .galleryList {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 25px;
-  gap: 25px;
-  filter: drop-shadow(5px 5px 10px gray)
+  grid-gap: 35px;
+  gap: 35px;
+  /* filter: drop-shadow(5px 5px 10px gray); */
 }
 
 .galleryItem {
   display: inline-block;
-  margin: 10px;
+  /* margin: 10px; */
   width: 250px;
-  height: 350px;
+  height: 325px;
   padding: 25px;
   border: 20px solid black;
   background-color: white;
+  filter: drop-shadow(5px 5px 10px gray);
+}
+
+.likes {
+  margin-bottom: 0;
+  position: relative;
+  top: 10px; left: 0px;
 }
