@@ -1,20 +1,18 @@
-// import galleryList from '../App/App.jsx'
-
 import { useState } from 'react';
-import '../App/App.css';
 import { incrementLike } from '../../galleryApi/gallery.api';
+import '../App/App.css';
 
 function GalleryItem({ imageData, refreshGalleryCallBack }) {
   // console.log('GalleryItem #:', imageData.id);
   // console.log('GalleryItem URL:', imageData.description);
   let [displayImage, setDisplayImage] = useState(true);
-  let [likeImage, setLikeImage] = useState(0);
+  let [likeImage, setLikeImage] = useState();
 
-  const handleClickLike = (id) => {
-    console.log('PUT update Likes - imageData.Id:', id);
-    incrementLike(id)
+  const handleClickLike = (imageData) => {
+    console.log('PUT update Likes - imageData.Id:', imageData.id);
+    // setLikeImage(likeImage++)
+    incrementLike(imageData.id)
       .then((response) => {
-        likeImage++;
         refreshGalleryCallBack();
       })
       .catch((err) => {
@@ -24,33 +22,28 @@ function GalleryItem({ imageData, refreshGalleryCallBack }) {
   };
 
   const handleClickToggleImage = (id) => {
-    // console.log('Image CLICKED:', imageData.title);
-    // console.log('Display Image?', imageData.display_description);
     setDisplayImage(!displayImage);
     console.log('showImage: t/f?', displayImage);
-    console.log('setShowImage: t/f?', setDisplayImage);
-    refreshGalleryCallBack();
+    // refreshGalleryCallBack();
   };
 
-  let image = [
+  let image = (
     <div key={imageData.id} data-testid="toggle">
       <img
         src={imageData.url}
         alt={`${imageData.description}`}
-        // onClick={() => handleClickToggleImage()}
       />
-    </div>,
-  ];
+    </div>
+  );
 
-  let imageDescription = [
+  let imageDescription = (
     <div
       key={imageData.id}
       data-testid="toggle"
-      // onClick={() => handleClickToggleImage()}
     >
       <p>{imageData.description}</p>
-    </div>,
-  ];
+    </div>
+  );
 
   return (
     <>
@@ -60,9 +53,9 @@ function GalleryItem({ imageData, refreshGalleryCallBack }) {
         onClick={() => handleClickToggleImage()}
       >
         <h3>{imageData.title}</h3>
-        {displayImage ? image : imageDescription};
+        {displayImage ? image : imageDescription}
       </div>
-      <button className="likes" onClick={() => handleClickLike(imageData.id)}>
+      <button className="likes" onClick={() => handleClickLike(imageData)}>
         Likes {imageData.likes}
       </button>
     </>

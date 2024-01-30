@@ -1,16 +1,13 @@
 import axios from 'axios';
+// import imageData from './'
 
 export const fetchGallery = () => {
   // axios GET call
   return axios.get('/api/gallery');
 };
 
-export const incrementLike = () => {
+export const incrementLike = (id, likes) => {
   // axios PUT call
-  return axios.put('/api/gallery/like/:id');
-};
-
-export const toggleImage = () => {
-  // axios PUT call
-  return axios.put('/api/gallery/:id');
+  console.log('PUT Call imageData', id)
+  return axios.put(`/api/gallery/${id}`);
 };
