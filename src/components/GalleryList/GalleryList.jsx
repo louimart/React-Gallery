@@ -3,7 +3,18 @@ import { useState, useEffect } from 'react';
 import { fetchGallery } from '../../galleryApi/gallery.api';
 import GalleryItem from '../GalleryItem/GalleryItem';
 
-function GalleryList({ galleryList }) {
+function GalleryList({ galleryList, refreshGalleryCallBack }) {
+  // const handleClickBuyStatus = (id) => {
+  //   console.log('PUT update BUY status - groceryId:', id);
+  //   updateBuyStatus(id)
+  //     .then((response) => {
+  //       groceryRefreshCallback();
+  //     })
+  //     .catch((err) => {
+  //       console.error('ERROR:', err);
+  //     });
+  // };
+
   // const [galleryList, setGalleryList] = useState([]);
   // // const [taskStatus, setTaskStatus] = useState([]);
 
@@ -30,12 +41,13 @@ function GalleryList({ galleryList }) {
   // }, []);
 
   return (
-    <div>
+    <div className="galleryList">
       {galleryList.map((imageData, imageIndex) => {
         console.log(imageData.url);
         return (
           <div key={imageIndex}>
             <GalleryItem
+              refreshGalleryCallBack={refreshGalleryCallBack}
               key={imageData.id}
               imageData={imageData}
               id={imageIndex}
@@ -43,7 +55,6 @@ function GalleryList({ galleryList }) {
           </div>
         );
       })}
-      ;
     </div>
   );
 }

@@ -1,4 +1,19 @@
+.app {
+  margin: 25px;
+}
+
+
 img {
   width: 250px;
   height: 250px;
+}
+
+.galleryItem {
+  display:inline-block;
+  margin: 10px;
+  width: 250px;
+  height: 350px;
+  padding: 25px;
+  border: 25px solid black;
+  /* background-color: lightgray; */
 }

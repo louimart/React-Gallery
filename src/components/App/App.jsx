@@ -32,12 +32,12 @@ function App() {
   }, []);
 
   return (
-    <div data-testid="app">
+    <div data-testid="app" className="app">
       <header>
         <h1>React Gallery</h1>
       </header>
       <main data-testid="galleryList">
-      <GalleryList galleryList={galleryList} />
+      <GalleryList galleryList={galleryList} refreshGalleryCallBack={refreshGallery}/>
       </main>
     </div>
   );

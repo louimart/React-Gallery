@@ -9,3 +9,8 @@ export const incrementLike = () => {
   // axios PUT call
   return axios.put('/api/gallery/like/:id');
 };
+
+export const toggleImage = () => {
+  // axios PUT call
+  return axios.put('/api/gallery/:id');
+};
